@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/kofuna/">
+        <file>radio/checked.png</file>
+        <file>radio/unchecked.png</file>
+        <file>radio/checked@2x.png</file>
+        <file>radio/unchecked@2x.png</file>
+        <file>checkbox/checked.png</file>
+        <file>checkbox/unchecked.png</file>
+        <file>checkbox/checked@2x.png</file>
+        <file>checkbox/unchecked@2x.png</file>
+        <file>checkbox/checked_disabled.png</file>
+        <file>checkbox/unchecked_disabled.png</file>
+        <file>checkbox/checked_disabled@2x.png</file>
+        <file>checkbox/unchecked_disabled@2x.png</file>
+        <file>scrollbar/uparrow.png</file>
+        <file>scrollbar/downarrow.png</file>
+        <file>scrollbar/leftarrow.png</file>
+        <file>scrollbar/rightarrow.png</file>
+        <file>scrollbar/uparrow@2x.png</file>
+        <file>scrollbar/downarrow@2x.png</file>
+        <file>scrollbar/leftarrow@2x.png</file>
+        <file>scrollbar/rightarrow@2x.png</file>
+        <file>style.qss</file>
+    </qresource>
+</RCC>

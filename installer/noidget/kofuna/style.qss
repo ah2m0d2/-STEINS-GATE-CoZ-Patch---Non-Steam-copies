@@ -1,0 +1,270 @@
+/******** GENERAL ********/
+
+QWidget {
+    background: #000;
+    selection-background-color: #fff;
+    selection-color: #000;
+    font: 13px "Tahoma";
+    color: #fff;
+}
+
+/******** CUSTOMISED CONTROLS ********/
+
+QPushButton[hasIcon=true] {
+    padding: 0px 4px;
+}
+
+QLabel#pageHeading {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QLabel#headerImage {
+    background: #fff;
+    padding: 24px 0px;
+}
+
+/******** TAB BAR ********/
+
+QTabWidget::pane {
+    margin-top: -1px;
+    border-top: 1px solid #fff;
+    padding: 12px;
+}
+
+QTabBar {
+    font-weight: bold;
+}
+
+QTabBar::tab {
+    background: #000;
+    border-bottom: 1px solid #fff;
+    padding: 4px 8px;
+    /* make non-selected tabs look smaller */
+    margin-top: 8px;
+}
+
+QTabBar::tab:selected {
+    border: 1px solid #fff;
+    border-bottom: 0;
+    margin-top: 0;
+}
+
+QTabBar::tab:first:selected {
+    /* don't show border on leftmost tab */
+    margin-left: -1px;
+}
+
+/******** FORM CONTROLS ********/
+
+QProgressBar {
+    border: 1px solid #fff;
+    text-align: center;
+    font-weight: bold;
+}
+
+QProgressBar::chunk {
+    background-color: #fff;
+}
+
+QGroupBox {
+    border: 0;
+    border-top: 1px solid #fff;
+    margin-top: 0.5em;
+    padding-top: 4px;
+    font-weight: bold;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 8px;
+}
+
+QLineEdit {
+    border: 1px solid #fff;
+}
+
+QPushButton {
+    border: 1px solid #fff;
+    padding: 4px;
+    font-weight: bold;
+}
+
+QPushButton:disabled {
+    border: 1px solid #a0a0a0;
+    background: #202020;
+    color: #a0a0a0;
+}
+
+QPushButton:pressed {
+    padding: 6px 2px 2px 6px;
+}
+
+QRadioButton::indicator {
+    width: 12px;
+    height: 12px;
+}
+
+QRadioButton::indicator:unchecked,
+QRadioButton::indicator:unchecked:hover,
+QRadioButton::indicator:unchecked:pressed {
+    image: url(:/kofuna/radio/unchecked.png);
+}
+
+QRadioButton::indicator:checked,
+QRadioButton::indicator:checked:hover,
+QRadioButton::indicator:checked:pressed {
+    image: url(:/kofuna/radio/checked.png);
+}
+
+QCheckBox::indicator {
+    width: 14px;
+    height: 14px;
+    padding-top: 2px;
+    subcontrol-position: left top;
+}
+
+QCheckBox::indicator:unchecked,
+QCheckBox::indicator:unchecked:hover,
+QCheckBox::indicator:unchecked:pressed {
+    image: url(:/kofuna/checkbox/unchecked.png);
+}
+
+QCheckBox::indicator:checked,
+QCheckBox::indicator:checked:hover,
+QCheckBox::indicator:checked:pressed {
+    image: url(:/kofuna/checkbox/checked.png);
+}
+
+QCheckBox::indicator:unchecked:disabled,
+QCheckBox::indicator:unchecked:disabled:hover,
+QCheckBox::indicator:unchecked:disabled:pressed {
+    image: url(:/kofuna/checkbox/unchecked_disabled.png);
+}
+
+QCheckBox::indicator:checked:disabled,
+QCheckBox::indicator:checked:disabled:hover,
+QCheckBox::indicator:checked:disabled:pressed {
+    image: url(:/kofuna/checkbox/checked_disabled.png);
+}
+
+QLineEdit {
+    padding: 0px;
+    padding-left: 4px;
+    background: #fff;
+    color: #000;
+    selection-color: #fff;
+    selection-background-color: #000;
+    border: 0;
+}
+
+QComboBox {
+    border: 1px solid #fff;
+    padding: 2px;
+    padding-left: 4px;
+}
+
+QComboBox QAbstractItemView {
+    border: 1px solid #fff;
+    padding: 2px;
+}
+
+QComboBox::drop-down {
+    border: 0;
+}
+
+QComboBox::down-arrow {
+    image: url(:/kofuna/scrollbar/downarrow.png);
+}
+
+QAbstractScrollArea {
+    /* QTextEdit etc. */
+    /*border: 1px solid #fff;*/
+    padding: -6px;
+}
+
+QAbstractScrollArea#logBox {
+    font-size: 12px;
+}
+
+/******** SCROLL BAR ********/
+
+QScrollBar {
+    border: 0;
+    background: #000;
+}
+
+QScrollBar:vertical {
+    width: 22px;
+    margin: 25px 4px 25px 0px;
+}
+
+QScrollBar:horizontal {
+    height: 22px;
+    margin: 0px 25px 4px 25px;
+}
+
+QScrollBar::handle {
+    border: 1px solid #fff;
+    background: #000;
+}
+
+QScrollBar::add-line,
+QScrollBar::sub-line {
+    border: 1px solid #fff;
+    background: #000;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 20px;
+    margin: 4px 4px 4px 0px;
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    margin: 0px 4px 4px 4px;
+    width: 20px;
+}
+
+QScrollBar::sub-line:horizontal {
+    /* this one's not displayed by default */
+    subcontrol-position: left;
+}
+
+QScrollBar::up-arrow:vertical {
+    image: url(:/kofuna/scrollbar/uparrow.png);
+}
+
+QScrollBar::down-arrow:vertical {
+    image: url(:/kofuna/scrollbar/downarrow.png);
+}
+
+QScrollBar::up-arrow:vertical:pressed,
+QScrollBar::down-arrow:vertical:pressed,
+QScrollBar::left-arrow:horizontal:pressed,
+QScrollBar::right-arrow:horizontal:pressed {
+    margin: 2px 0 0 2px;
+}
+
+QScrollBar::left-arrow:horizontal {
+    image: url(:/kofuna/scrollbar/leftarrow.png);
+}
+
+QScrollBar::right-arrow:horizontal {
+    image: url(:/kofuna/scrollbar/rightarrow.png);
+}
+
+QScrollBar::add-page,
+QScrollBar::sub-page {
+    background: none;
+}
+
+/******** DIALOGS ********/
+
+QDialogButtonBox QPushButton {
+    margin: 6px;
+    min-width: 56px;
+}

@@ -1,0 +1,13 @@
+<tr class='param'>
+  <td><%- property.name %></td>
+  <td><%= formatType(property.type) %><% if (property.default) { %> = <code><%- property.default %></code><% } %></td>
+  <td class='param-description'><p><%= md(property.description, true) %></p></td>
+</tr>
+<% if(property.properties && property.properties.length) { %>
+  <% property.properties.forEach(function(childProperty) { %>
+    <%= renderParamProperty({
+      property: childProperty,
+      renderParamProperty: renderParamProperty
+    }) %>
+  <% }) %>
+<% } %>

@@ -1,0 +1,94 @@
+<section class='py2 clearfix'>
+  <% if (typeof nested === 'undefined' || (section.context && section.context.github)) { %>
+  <% if (typeof nested === 'undefined') { %>
+  <h1 class='function' id='<%- slug(section.namespace) %>'>
+    <%- fullPath(section) %><span class='gray section-params'><%- formatParams(section) %></span>
+  </h2>
+  <% } %>
+  <% if (section.context && section.context.github) { %>
+    CONTEXT UNSUPPORTED<a class='fr fill-darken0 round round pad1x quiet h5' href='<%= section.context.github.url %>'>
+    <span><%= section.context.github.path %></span>
+    </a>
+  <% } %>
+  <% } %>
+
+  <%= md(section.description) %>
+
+  <% if (section.tags.some(function(tag) {return tag.title == 'default';})) { %><p class='mono'><strong>Default:</strong> <code><%- section.tags.find(function(tag) { return tag.title == 'default'; }).description %></code></p><% } %>
+
+  <% if (typeof nested === 'undefined' && section.kind !== 'namespace' && (section.kind !== 'class' || !section.hideconstructor)) { %><p><code><%= signature(section) %></code></p><% } %>
+  <% if (section.type) { %>
+    <p class='mono'>
+      <strong>Type:</strong>
+      <%= formatType(section.type) %>
+    </p>
+  <% } %>
+  <% if (section.augments.length) { %>
+    <p class='mono'>
+      <strong>Extends</strong>
+      <% if (section.augments) { %>
+        <%= section.augments.map(function(tag) {
+	  return autolink(tag.name);
+	}).join(', ') %>
+      <% } %>
+    </p>
+  <% } %>
+
+  <% if (section.deprecated) { %><p class='mono'><strong>Deprecated:</strong> <%= md(section.deprecated, true) %></p><% }%>
+  <% if (section.version) { %><p class='mono'><strong>Version:</strong> <%- section.version %></p><% }%>
+  <% if (section.license) { %><p class='mono'><strong>License:</strong> <%- section.license %></p><% }%>
+  <% if (section.author) { %><p class='mono'><strong>Author:</strong> <%- section.author %></p><% }%>
+  <% if (section.copyright) { %><p class='mono'><strong>Copyright:</strong> <%= md(section.copyright, true) %></p><% }%>
+  <% if (section.since) { %><p class='mono'><strong>Since:</strong> <%- section.since %></p><% }%>
+
+  <% if (section.params.length) { %>
+    <h4>Parameters</h4>
+    <%= renderParamPropertyTable({type: 'param', renderParamProperty: renderParamProperty, ele: section.params, hasDefault: true}) %>
+  <% } %>
+
+  <% if (section.properties.length) { %>
+    <h4>Properties</h4>
+    <%= renderParamPropertyTable({type: 'prop', renderParamProperty: renderParamProperty, ele: section.properties, hasDefault: false}) %>
+  <% } %>
+
+  <% if (section.returns.length) { %>
+    <% section.returns.forEach(function(ret) { %>
+      <h4>Returns</h4>
+      <code><%= formatType(ret.type) %></code><% if (ret.description) { %>:
+        <p class='force-inline'><%= md(ret.description, true) %></p>
+      <% }%>
+    <% }) %>
+  <% } %>
+
+  <% if (section.throws.length) { %>
+    <h4>Throws</h4>
+    <ul>
+      <% section.throws.forEach(function(throws) { %>
+        <li><%= formatType(throws.type) %>: <div class='force-inline'><%= md(throws.description, true) %></div></li>
+      <% }); %>
+    </ul>
+  <% } %>
+
+  <% if (section.examples.length) { %>
+    <h4>Example</h4>
+    <% section.examples.forEach(function(example) { %>
+      <% if (example.caption) { %><p><%= md(example.caption) %></p><% } %>
+      <pre class='overflow-auto'><%= highlight(example.description) %></pre>
+    <% }) %>
+  <% } %>
+
+  <% if (section.members.static && section.members.static.length) { %>
+    <h4>Static members</h4>
+    <%= renderSectionList({ members: section.members.static, renderSection: renderSection, renderParamProperty: renderParamProperty, renderParamPropertyTable: renderParamPropertyTable, noun: 'Static Member' }) %>
+  <% } %>
+
+  <% if (section.members.instance && section.members.instance.length) { %>
+    <h4>Instance members</h4>
+    <%= renderSectionList({ members: section.members.instance, renderSection: renderSection, renderParamProperty: renderParamProperty, renderParamPropertyTable: renderParamPropertyTable, noun: 'Instance Member' }) %>
+  <% } %>
+
+  <% if (section.members.events && section.members.events.length) { %>
+    <h4>Events</h4>
+    <%= renderSectionList({ members: section.members.events, renderSection: renderSection, renderParamProperty: renderParamProperty, renderParamPropertyTable: renderParamPropertyTable, noun: 'Event' }) %>
+  <% } %>
+</section>

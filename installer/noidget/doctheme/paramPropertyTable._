@@ -1,0 +1,15 @@
+<div class='table-wrapper'>
+    <table class='params'>
+    <tr>
+        <th><%- type %></th>
+        <th>type<% if(hasDefault) { %> = default<% } %></th>
+        <th>description</th>
+    </tr>
+    <% ele.forEach(function(property) { %>
+        <%= renderParamProperty({
+        property: property,
+        renderParamProperty: renderParamProperty
+        }) %>
+    <% }) %>
+    </table>
+</div>

@@ -1,0 +1,15 @@
+# xdelta3.1 (https://github.com/jmacd/xdelta 7508fd2)
+INCLUDEPATH += $$quote(D:/xdelta)
+win32-msvc* {
+    # build xdelta3 as part of noidget, see src/xd3_dummy.c
+    HEADERS += $$files(D:/xdelta/*.h, false)
+    DEFINES += XD3_MAIN=0 NOT_MAIN=1 XD3_USE_LARGEFILE64=1 SECONDARY_DJW=1 SECONDARY_FGK=1 XD3_WIN32=1 SECONDARY_LZMA=0 SIZEOF_SIZE_T=4 SIZEOF_UNSIGNED_LONG_LONG=8 EXTERNAL_COMPRESSION=0
+    CONFIG(debug, debug|release) {
+        DEFINES += XD3_DEBUG=1
+    }
+    else {
+        DEFINES += XD3_DEBUG=0
+    }
+} else {
+    # TODO other platforms
+}

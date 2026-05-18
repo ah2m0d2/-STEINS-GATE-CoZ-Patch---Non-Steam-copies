@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="mute.png">assets/mute.png</file>
+        <file alias="mute_hover.png">assets/mute_hover.png</file>
+        <file alias="cross.png">assets/cross.png</file>
+        <file alias="cross_hover.png">assets/cross_hover.png</file>
+        <file>jslib.js</file>
+    </qresource>
+</RCC>

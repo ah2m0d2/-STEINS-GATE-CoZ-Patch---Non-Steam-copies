@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title><%- config['project-name'] %> <%- config['project-version'] %> | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/theme.css' type='text/css' rel='stylesheet' />
+  <link href='assets/hljs-sunburst.css' type='text/css' rel='stylesheet' />
+</head>
+<body class='documentation cf'>
+  <div class='toc-container'>
+    <h1 class='no-anchor title'><%- config['project-name'] %></h1>
+    <h4><%- config['project-version'] %></h4>
+    <input
+      placeholder='Filter'
+      id='filter-input'
+      class='search'
+      type='text' />
+    <div id='toc' class='toc'>
+      <% docs.forEach(function(doc) { %>
+        <% var hasMembers = doc.members.static.length || doc.members.instance.length %>
+        <a
+          href='#<%=slug(doc.namespace)%>'
+          class="class">
+          <%- fullPath(doc) %>
+        </a>
+        <% if (hasMembers) { %>
+          <% if (doc.members.static && doc.members.static.length) { %>
+            <% doc.members.static.forEach(function(member) { %>
+              <a
+                href='#<%=slug(member.namespace)%>'
+                class='member'>
+                .<%- shortSignature(member) %>
+              </a>
+            <% }) %>
+          <% } %>
+          <% if (doc.members.instance && doc.members.instance.length) { %>
+            <% doc.members.instance.forEach(function(member) { %>
+              <a
+                href='#<%=slug(member.namespace)%>'
+                class='member'>
+                #<%- shortSignature(member) %>
+              </a>
+            <% }) %>
+          <% } %>
+          <% if (doc.members.inner && doc.members.inner.length) { %>
+            <% doc.members.inner.forEach(function(member) { %>
+              <a
+                href='#<%=slug(member.namespace)%>'
+                class='member'>
+                #<%- shortSignature(member) %>
+              </a>
+            <% }) %>
+          <% } %>
+          <% if (doc.members.events && doc.members.events.length) { %>
+            <% doc.members.events.forEach(function(member) { %>
+              <a
+                href='#<%=slug(member.namespace)%>'
+                class='member'>
+                ⓔ <%- shortSignature(member) %>
+              </a>
+            <% }) %>
+          <% } %>
+        <% } %>
+      <% }) %>
+    </div>
+  </div>
+  <div class='content-container'>
+    <div class='content'>
+      <% docs.forEach(function(s) { %>
+        <% if (s.kind !== 'note') { %>
+          <div class='main'>
+            <%= renderSection({
+              section: s,
+              renderSection: renderSection,
+              renderSectionList: renderSectionList,
+              renderParamProperty: renderParamProperty,
+              renderParamPropertyTable: renderParamPropertyTable
+            }) %>
+          </div>
+        <% } else { %>
+          NOTES UNSUPPORTED<!--<div class='keyline-top-not py2'><%=renderNote({ note: s })%></div>-->
+        <% } %>
+      <% }) %>
+    </div>
+  </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>
