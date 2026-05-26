@@ -21,7 +21,8 @@ The end result is that the installer accepts any version of the game's script ar
  
 - A copy of STEINS;GATE containing `Game.exe` and a `USRDIR` folder
 - [Microsoft Visual C++ Redistributable (x86)](https://aka.ms/vs/17/release/vc_redist.x86.exe) — install this first if you get DLL errors after installing the patch.
-- This was tested and proven to work on the latest STEINS.GATE.Update.23.02.2018 steam update, #You might need to update to the latest version of the game in order for that patch to work#
+> [!WARNING]
+> This patch has only been tested on the latest version **STEINS.GATE.Update.23.02.2018**. Using an older version of the game may cause crashes or the patch to not work correctly. Make sure you have the latest version before installing.
 
 ## Disclaimer
  
